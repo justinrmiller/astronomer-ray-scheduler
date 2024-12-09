@@ -125,7 +125,7 @@ def cluster_deletion(ti):
     default_args={"owner": "Astro", "retries": 3},
     tags=["ray", "job management"],
 )
-def ray_job_manager():
+def ray_vertex_ai_workflow():
     cluster_create = PythonOperator(
         task_id='cluster_creation',
         python_callable=cluster_creation,
@@ -143,4 +143,4 @@ def ray_job_manager():
 
     cluster_create >> submit_job >> teardown_cluster
 
-ray_job_manager()
+ray_vertex_ai_workflow()
